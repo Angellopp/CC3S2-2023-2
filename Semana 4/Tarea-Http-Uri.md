@@ -16,7 +16,7 @@
    
 - Al estar en la misma red, mostrar la dirección local host sería algo repetitivo. Cosa distinta pasaría si estuvieramos recibiendo información desde otra dirección
 
-    **Encabezados Servidor 'Falso'**
+    **``Encabezados Servidor 'Falso'``**
     ```
     GET / HTTP/1.1
     User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.19041.3031
@@ -26,7 +26,7 @@
 
 4. ¿Cuál es el código de respuesta HTTP del servidor que indica el estado de la solicitud del cliente y qué versión del protocolo HTTP utilizó el servidor para responder al cliente?
 
-    **Respuesta HTTP**
+    **``Respuesta HTTP``**
     
     ```
     HTTP/1.1 200 OK
@@ -74,7 +74,7 @@
 
     En el parametro action debe ser reemplazada con **`https://localhost:8081`**
 
-    **Index.html**
+    **``Index.html``**
 
     ```html
     <!DOCTYPE html>
@@ -97,7 +97,32 @@
 
 7. ¿Cómo se presenta al servidor la información que ingresó en el formulario? ¿Qué tareas necesitaría realizar un framework SaaS como Sinatra o Rails para presentar esta información en un formato conveniente a una aplicación SaaS escrita, por ejemplo, en Ruby?
    
-   La información devuelta mediante el POST, parece estar dañada. Es así que mediante el uso de un framework podemos darle una codificación.
+   Se presenta como parte de la solicitud **``POST HTTP``**
+
+    **``Solicitud POST``**
+    ```
+    POST / HTTP/1.1
+    Host: localhost:8081
+    Connection: keep-alive
+    Content-Length: 93
+    Cache-Control: max-age=0
+    sec-ch-ua: "Microsoft Edge";v="117", "Not;A=Brand";v="8", "Chromium";v="117"
+    sec-ch-ua-mobile: ?0
+    sec-ch-ua-platform: "Windows"
+    Upgrade-Insecure-Requests: 1
+    Origin: null
+    Content-Type: application/x-www-form-urlencoded
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36 Edg/117.0.2045.31
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+    Sec-Fetch-Site: cross-site
+    Sec-Fetch-Mode: navigate
+    Sec-Fetch-User: ?1
+    Sec-Fetch-Dest: document
+    Accept-Encoding: gzip, deflate, br
+    Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+    ```
+   
+   La información ingresada en un formulario se presenta al servidor en la solicitud HTTP, y un framework como Sinatra o Ruby on Rails se encargaría de procesar y utilizar esos datos según las necesidades de la aplicación, como por ejemplo almacenarlos en una base de datos, realizar cálculos, mostrarlos en una vista o realizar cualquier otra tarea relacionada con la lógica de la aplicación.
 
 
 8. ¿Cuál es el efecto de agregar parámetros URI adicionales como parte de la ruta POST?
