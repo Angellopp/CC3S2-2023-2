@@ -1,10 +1,16 @@
-1.¿Cuáles son las dos diferencias principales que has visto anteriormente y lo que ves en un navegador web 'normal'? ¿Qué explica estas diferencias?
-Las principal fallo que presenta se aprecia en el fallo de renderizado de la imagen, esto debido a que lo que recibimos del comando curl solo es la respuesta del servidor y es así que no se puede interactuar con la página
+## Desarrollo de Preguntas
 
-2.Suponiendo que estás ejecutando curl desde otro shell ¿qué URL tendrás que pasarle a curl para intentar acceder a tu servidor falso y por qué?
-Para acceder desde otro shell necesitaríamos indicarle el puerto al cual enviar la solicitud. Es decir tenemos que usar http://localhost:8081
+1. ¿Cuáles son las dos diferencias principales que has visto anteriormente y lo que ves en un navegador web 'normal'? ¿Qué explica estas diferencias?
 
-3.La primera línea de la solicitud identifica qué URL desea recuperar el cliente. ¿Por qué no ves http://localhost:8081 en ninguna parte de esa línea?
+- La diferencia recae sobre la funcionalidad de **`curl`** , ya que sirve para realizar solicitudes y recibir respuestas de servidores web, en este caso estamos guardando y viendo la información de la solicitud **`GET`**.
+
+2. Suponiendo que estás ejecutando curl desde otro shell ¿qué URL tendrás que pasarle a curl para intentar acceder a tu servidor falso y por qué?
+
+- Para acceder desde otro shell necesitaríamos indicarle la IP y el puerto al cual enviar la solicitud. En este caso deberíamos usar el comando: 
+
+```curl http://192.168.105.232:8081```
+
+3. La primera línea de la solicitud identifica qué URL desea recuperar el cliente. ¿Por qué no ves http://localhost:8081 en ninguna parte de esa línea?
 Al estar en la misma red, mostrar la dirección local host sería algo repetitivo. Cosa distinta pasaría si estuvieramos recibiendo información desde otra dirección
 
 Encabezados localhost
