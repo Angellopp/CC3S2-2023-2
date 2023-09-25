@@ -27,7 +27,7 @@ El uso más básico de curl es emitir un HTTP GET o POST a un sitio, así que in
 
 y verifica que lo que ve impreso pueda corresponder de manera plausible al contenido de la página que viste en tu navegador previamente. 
 (Las comillas simples no son técnicamente necesarias en este caso, pero deberías acostumbrarte a usarlas con curl, porque los URI a menudo tendrán caracteres 
-especiales, como `?` o `#`, que el shell de Unix interpretaría de manera especial si no están protegidos por comillas simples). 
+especiales, como `? ` o `#`, que el shell de Unix interpretaría de manera especial si no están protegidos por comillas simples). 
 
 Guarda el contenido del comando `curl` anterior en un archivo y visualiza el archivo como lo representaría un navegador. 
 

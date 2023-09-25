@@ -6,9 +6,11 @@
 
 2. Suponiendo que estás ejecutando curl desde otro shell ¿qué URL tendrás que pasarle a curl para intentar acceder a tu servidor falso y por qué?
 
-- Para acceder desde otro shell necesitaríamos indicarle la IP y el puerto al cual enviar la solicitud. En este caso deberíamos usar el comando: 
+- Para acceder desde otro shell necesitaríamos indicarle la dirección IP y el puerto al cual enviar la solicitud. En este caso deberíamos usar el comando: 
 
-```curl http://192.168.105.232:8081```
+    `> curl http://192.168.105.232:8081`
+
+    ![IPv4](/Semana%204/Images/IPv4.PNG)
 
 3. La primera línea de la solicitud identifica qué URL desea recuperar el cliente. ¿Por qué no ves http://localhost:8081 en ninguna parte de esa línea?
 Al estar en la misma red, mostrar la dirección local host sería algo repetitivo. Cosa distinta pasaría si estuvieramos recibiendo información desde otra dirección
