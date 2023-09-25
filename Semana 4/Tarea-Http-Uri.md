@@ -8,46 +8,72 @@
 
 - Para acceder desde otro shell necesitaríamos indicarle la dirección IP y el puerto al cual enviar la solicitud. En este caso deberíamos usar el comando: 
 
-    `> curl http://192.168.105.232:8081`
+    **`> curl http://192.168.105.232:8081`**
 
     ![IPv4](/Semana%204/Images/IPv4.PNG)
 
-3. La primera línea de la solicitud identifica qué URL desea recuperar el cliente. ¿Por qué no ves http://localhost:8081 en ninguna parte de esa línea?
-Al estar en la misma red, mostrar la dirección local host sería algo repetitivo. Cosa distinta pasaría si estuvieramos recibiendo información desde otra dirección
+3. La primera línea de la solicitud identifica qué URL desea recuperar el cliente. ¿Por qué no ves `http://localhost:8081` en ninguna parte de esa línea?
+   
+- Al estar en la misma red, mostrar la dirección local host sería algo repetitivo. Cosa distinta pasaría si estuvieramos recibiendo información desde otra dirección
 
-Encabezados localhost
+    **Encabezados Servidor 'Falso'**
+    ```
+    GET / HTTP/1.1
+    User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; es-PE) WindowsPowerShell/5.1.19041.3031
+    Host: localhost:8081
+    Connection: Keep-Alive
+    ```
 
-GET / HTTP/1.1
-Host: localhost:8081
-User-Agent: curl/7.81.0
-Accept: */*
+4. ¿Cuál es el código de respuesta HTTP del servidor que indica el estado de la solicitud del cliente y qué versión del protocolo HTTP utilizó el servidor para responder al cliente?
 
-Encabezados de curl -i 'http://randomword.saasbook.info'
+    **Respuesta HTTP**
+    
+    ```
+    HTTP/1.1 200 OK
+    Connection: keep-alive
+    Content-Type: text/html;charset=utf-8
+    Content-Length: 482
+    X-Xss-Protection: 1; mode=block
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: SAMEORIGIN
+    Server: WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
+    Date: Mon, 25 Sep 2023 21:01:20 GMT
+    Via: 1.1 vegur
+    ```
 
-HTTP/1.1 200 OK
-Connection: keep-alive
-Content-Type: text/html;charset=utf-8
-Content-Length: 482
-X-Xss-Protection: 1; mode=block
-X-Content-Type-Options: nosniff
-X-Frame-Options: SAMEORIGIN
-Server: WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
-Date: Mon, 25 Sep 2023 17:18:38 GMT
-Via: 1.1 vegur
+    El estado de la solicitud es indicado por la primera linea de respuesta, en este caso el código **200** nos indica que todo ha ido con normalidad.
+    Por otro lado, la versión del protocolo se menciona en:  **HTTP/1.1**
+    Es decir la versión es **`1.1`**
 
+5. Cualquier solicitud web determinada puede devolver una página HTML, una imagen u otros tipos de entidades. ¿Hay algo en los encabezados que crea que le dice al cliente cómo interpretar el resultado?.
 
-4.¿cuál es el código de respuesta HTTP del servidor que indica el estado de la solicitud del cliente y qué versión del protocolo HTTP utilizó el servidor para responder al cliente?
+    En los encabezados de la respuesta podemos visualizar el encabezado **`Content-Type`** seguido de **`text/html;charset=utf-8`**. 
+    
+    **`Content-Type: text/html`**: nos informa acerca del contenido en este caso es un html; 
+    
+    **`charset=utf-8`**: nos especifica el tipo de codificación.
 
-El estado de la solicitud es indicado por la primera linea de respuesta, en este caso el código 200 nos indica que todo ha ido con normalidad.
-Por otro lado, la versión del protocolo se menciona en:  HTTP/1.1
-Es decir la versión es 1.1
+    Ejemplo con:
+    
+     **`> curl -i 'http://randomword.saasbook.info'`**
 
-5.Cualquier solicitud web determinada puede devolver una página HTML, una imagen u otros tipos de entidades. ¿Hay algo en los encabezados que crea que le dice al cliente cómo interpretar el resultado?.
+    ```
+    HTTP/1.1 200 OK
+    Connection: keep-alive
+    Content-Type: text/html;charset=utf-8
+    Content-Length: 482
+    X-Xss-Protection: 1; mode=block
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: SAMEORIGIN
+    Server: WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
+    Date: Mon, 25 Sep 2023 21:01:20 GMT
+    Via: 1.1 vegur
+    ```
 
-En los encabezados de la respuesta podemos visualizar el encabezado "Content-Type" seguido de "text/html;charset=utf-8". La primera parte de esta cadena nos informa acerca del contenido en este caso es un html; La segunda parte, nos especifica el tipo de codificación.
-
-6.Cuando se envía un formulario HTML, se genera una solicitud HTTP POST desde el navegador. Para llegar a tu servidor falso, ¿con qué URL deberías reemplazar Url-servidor-falso en el archivo anterior?
+6. Cuando se envía un formulario HTML, se genera una solicitud HTTP POST desde el navegador. Para llegar a tu servidor falso, ¿con qué URL deberías reemplazar Url-servidor-falso en el archivo anterior?
 En el parametro action debe ser reemplazada con https://localhost:8081 
+
+    
 
 7.¿Cómo se presenta al servidor la información que ingresó en el formulario? ¿Qué tareas necesitaría realizar un framework SaaS como Sinatra o Rails para presentar esta información en un formato conveniente a una aplicación SaaS escrita, por ejemplo, en Ruby?
 La información devuelta mediante el POST, parece estar dañada. Es así que mediante el uso de un framework podemos darle una codificación.
