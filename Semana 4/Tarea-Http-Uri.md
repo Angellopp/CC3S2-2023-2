@@ -71,17 +71,47 @@
     ```
 
 6. Cuando se envía un formulario HTML, se genera una solicitud HTTP POST desde el navegador. Para llegar a tu servidor falso, ¿con qué URL deberías reemplazar Url-servidor-falso en el archivo anterior?
-En el parametro action debe ser reemplazada con https://localhost:8081 
 
-    
+    En el parametro action debe ser reemplazada con **`https://localhost:8081`**
 
-7.¿Cómo se presenta al servidor la información que ingresó en el formulario? ¿Qué tareas necesitaría realizar un framework SaaS como Sinatra o Rails para presentar esta información en un formato conveniente a una aplicación SaaS escrita, por ejemplo, en Ruby?
-La información devuelta mediante el POST, parece estar dañada. Es así que mediante el uso de un framework podemos darle una codificación.
+    **Index.html**
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        </head>
+        <body> <form method="post" action="http://localhost:8081">
+        <label>Email:</label>
+        <input type="text" name="email">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <input type="hidden" name="secret_info" value="secret_value">
+            <input type="submit" name="login" value="Log In!">
+        </form>
+        </body>
+    </html> 
+    ```
 
 
-    ¿Cuál es el efecto de agregar parámetros URI adicionales como parte de la ruta POST?
-    
-    ¿Cuál es el efecto de cambiar las propiedades de nombre de los campos del formulario?
-    ¿Puedes tener más de un botón Submit? Si es así, ¿cómo sabe el servidor en cuál se hizo clic? (Sugerencia: experimenta con los atributos de la etiqueta <submit>).
-    ¿Se puede enviar el formulario mediante GET en lugar de POST? En caso afirmativo, ¿cuál es la diferencia en cómo el servidor ve esas solicitudes?
-    ¿Qué otros verbos HTTP son posibles en la ruta de envío del formulario? ¿Puedes hacer que el navegador web genere una ruta que utilice PUT, PATCH o DELETE?.
+
+7. ¿Cómo se presenta al servidor la información que ingresó en el formulario? ¿Qué tareas necesitaría realizar un framework SaaS como Sinatra o Rails para presentar esta información en un formato conveniente a una aplicación SaaS escrita, por ejemplo, en Ruby?
+   
+   La información devuelta mediante el POST, parece estar dañada. Es así que mediante el uso de un framework podemos darle una codificación.
+
+
+8. ¿Cuál es el efecto de agregar parámetros URI adicionales como parte de la ruta POST?
+
+
+
+9. ¿Cuál es el efecto de cambiar las propiedades de nombre de los campos del formulario?
+
+
+10. ¿Puedes tener más de un botón Submit? Si es así, ¿cómo sabe el servidor en cuál se hizo clic? (Sugerencia: experimenta con los atributos de la etiqueta <submit>).
+
+
+11. ¿Se puede enviar el formulario mediante GET en lugar de POST? En caso afirmativo, ¿cuál es la diferencia en cómo el servidor ve esas solicitudes?
+
+
+
+12. ¿Qué otros verbos HTTP son posibles en la ruta de envío del formulario? ¿Puedes hacer que el navegador web genere una ruta que utilice PUT, PATCH o DELETE?.
